@@ -7,12 +7,9 @@ import Questions from "./Questions";
 
 function Form() {
   const eco = useEco();
-//   console.log(eco);
   const handleContinue = (values) => {
     eco.setPerson(values.name)
     eco.setStep(1);
-    // console.log("continuo con la parte de las preguntas y opciones");
-    // console.log(eco.step,eco.person);
   };
 
   const renderForm = () => {
@@ -25,12 +22,12 @@ function Form() {
         onSubmit={(values)=>handleContinue(values)}
         validationSchema={Yup.object({
           name: Yup.string()
-            .required("Please enter a name")
+            .required("Please enter your name")
             .typeError("Please enter a valid name"),
         })}
       >
-        <Formm>
-          <Input name="name" label={"Register you Name"} />
+        <Formm className="w-[350px] md:w-[800px] mb-40">
+          <Input name="name" label={"Enter your name"} />
           <ButtonContinue type="submit" />
         </Formm>
       </Formik>
