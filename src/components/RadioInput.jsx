@@ -3,20 +3,32 @@
 
 import { useEco } from "../context/EcoContext";
 
+function RadioInput({ label, val, index }) {
+  const { selected, setSelected, setError } = useEco();
 
-function RadioInput({label, val, index}) {
-  const { points, setPoints } = useEco();
-    
-  const handleChange = ({target})=>{
-    console.log(target);
-  }
+  const handleChange = ({ target }) => {
+    setSelected((prevPoints) => ({
+      ...prevPoints,
+      [index]: val,
+    }));
+    setError(false);
+  };
 
-  return <div>
-    <label >
-        <input type="radio" name={index} id={index} value={val} onChange={()=>handleChange}/>
+  return (
+    <div>
+      <label>
+        <input
+          type="radio"
+          name={index}
+          id={index}
+          checked={selected[index] === val}
+          value={val}
+          onChange={handleChange}
+        />
         {label}
-    </label>
-  </div>;
+      </label>
+    </div>
+  );
 }
 
 export default RadioInput;

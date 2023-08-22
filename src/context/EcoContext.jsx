@@ -9,14 +9,18 @@ function EcoProvider ({children}) {
     let questionsLength = questions.length;
     const [totalSteps, setTotalSteps] = useState(questionsLength);
     const [person, setPerson] = useState('');
-    const [points , setPoints] = useState([])
+    const [selected, setSelected] = useState({})
+    const [points, setPoints] = useState(0);
+    const [error, setError] = useState(false);
     
     return (
         <Contexto.Provider value={{
             step, setStep,
             totalSteps, setTotalSteps,
             person, setPerson,
-            points, setPoints
+            selected, setSelected,
+            points, setPoints,
+            error, setError
         }}>
             {children}
         </Contexto.Provider>

@@ -1,13 +1,11 @@
-
+import { useEco } from "../context/EcoContext";
 
 function Results() {
+  const { points, person } = useEco();
   return (
-    <div>
-      <div>
-        
-        this will be the part where the user can see a reference of their scores
-      </div>
-    </div>
+    <>
+      <div>{person} Your Result was : ({points})</div>
+    </>
   );
 }
 
