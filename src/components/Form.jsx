@@ -7,13 +7,12 @@ import Questions from "./Questions";
 
 function Form() {
   const eco = useEco();
-  console.log(eco);
+//   console.log(eco);
   const handleContinue = (values) => {
-    // console.log(values.name);
     eco.setPerson(values.name)
     eco.setStep(1);
     // console.log("continuo con la parte de las preguntas y opciones");
-    console.log(eco.step,eco.person);
+    // console.log(eco.step,eco.person);
   };
 
   const renderForm = () => {
@@ -21,6 +20,7 @@ function Form() {
       <Formik
         initialValues={{
           name: "",
+          selection:[]
         }}
         onSubmit={(values)=>handleContinue(values)}
         validationSchema={Yup.object({
@@ -39,7 +39,7 @@ function Form() {
 
   const renderView = () => 
     (
-        eco.step === 1 ? <Questions /> : renderForm()
+        eco.step >= 1 ? <Questions /> : renderForm()
     )
     
 
